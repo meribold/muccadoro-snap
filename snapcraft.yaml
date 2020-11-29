@@ -1,6 +1,6 @@
 name: muccadoro
 title: Muccadoro
-version: 1.0.0
+version: 1.0.1
 summary: Pomodoro timer using figlet, cowsay, and lolcat
 description: >
   Muccadoro implements the Pomodoro Technique using figlet, cowsay, and lolcat.
