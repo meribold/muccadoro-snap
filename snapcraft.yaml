@@ -1,0 +1,35 @@
+name: muccadoro
+title: Muccadoro
+version: 1.0.0
+summary: Pomodoro timer using figlet, cowsay, and lolcat
+description: >
+  Muccadoro implements the Pomodoro Technique using figlet, cowsay, and lolcat.
+confinement: strict
+grade: stable
+base: core18
+parts:
+  muccadoro:
+    plugin: dump
+    source: https://github.com/meribold/muccadoro/archive/v$SNAPCRAFT_PROJECT_VERSION.tar.gz
+    stage-packages:
+      - cowsay
+      - figlet
+      - lolcat
+      - libnotify-bin
+      - libtext-charwidth-perl
+layout:
+  /bin/cowsay:
+    symlink: $SNAP/usr/games/cowsay
+  /bin/figlet:
+    symlink: $SNAP/usr/bin/figlet-figlet
+  /bin/lolcat:
+    symlink: $SNAP/usr/games/lolcat
+apps:
+  muccadoro:
+    environment:
+      LC_ALL: 'C.UTF-8'
+      PERL5LIB: '$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/perl5/5.26:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/perl/5.26:$SNAP/usr/share/perl/5.26'
+      RUBYLIB: '$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/ruby/2.5.0:$SNAP/usr/lib/ruby/2.5.0:$SNAP/usr/lib/ruby/vendor_ruby'
+      COWPATH: '$SNAP/usr/share/cowsay/cows'
+      FIGLET_FONTDIR: '$SNAP/usr/share/figlet'
+    command: muccadoro
