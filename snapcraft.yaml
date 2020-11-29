@@ -33,3 +33,5 @@ apps:
       COWPATH: '$SNAP/usr/share/cowsay/cows'
       FIGLET_FONTDIR: '$SNAP/usr/share/figlet'
     command: muccadoro
+    plugs:
+      - desktop
